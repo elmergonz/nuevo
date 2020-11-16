@@ -1,6 +1,10 @@
 from peewee import *
+from deta import Deta
 
-db = SqliteDatabase('usuarios.db')
+deta = Deta('b0wjwc47_vDEHNf1P9XWKQmQm5Yk7REWacUxZJjVV')
+db = deta.Base('usuarios')
+
+# db = SqliteDatabase('usuarios.db')
 
 class BaseModel(Model):
     class Meta:
@@ -69,5 +73,5 @@ def delete_secret(id):
     except Secret.DoesNotExist:
         return None
 
-db.connect()
-db.create_tables([User, Secret])
+# db.connect()
+# db.create_tables([User, Secret])
