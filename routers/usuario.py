@@ -7,7 +7,7 @@ import re
 
 router = APIRouter()
 
-@router.post('/register')
+@router.post('/api/register')
 def register(user:User):
 
     u = dbdata.get_user_by_email(user.email)
@@ -31,7 +31,7 @@ def register(user:User):
     else:
         return ServerResult(ok=False, message="El usuario ya existe")
 
-@router.post('/login')
+@router.post('/api/login')
 def login(user:UserLog):
 
     u = dbdata.get_user(user.email, user.password)
@@ -49,7 +49,7 @@ def login(user:UserLog):
     else:
         return ServerResult(ok=False, message="El usuario no existe, revise sus credenciales")
 
-@router.post('/logout')
+@router.post('/api/logout')
 def logout(token:str):
     user = dbdata.get_user_by_token(token)
 
@@ -61,7 +61,7 @@ def logout(token:str):
     else:
         return ServerResult(ok=False, message="Token invalido")
 
-@router.put('/user/modify/data')
+@router.put('/api/user/modify/data')
 def modify_data(token:str, newName:str, newEmail:str):
     user = dbdata.get_user_by_token(token)
 
@@ -81,7 +81,7 @@ def modify_data(token:str, newName:str, newEmail:str):
     else:
         return ServerResult(ok=False, message="Token invalido")
 
-@router.put('/user/modify/password')
+@router.put('/api/user/modify/password')
 def modify_password(token:str, newPassword:str):
     user = dbdata.get_user_by_token(token)
 

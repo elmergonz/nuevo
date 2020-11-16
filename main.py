@@ -8,7 +8,7 @@ app = FastAPI()
 app.include_router(usuario.router, tags=['Usuario'])
 app.include_router(secrets.router, tags=['Secrets'])
 
-@app.get('/', tags=['Inicio'])
+@app.get('/api', tags=['Inicio'])
 def read_root():
     return {
         'proyecto': 'Api de secretos personales',

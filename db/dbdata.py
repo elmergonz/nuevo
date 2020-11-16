@@ -1,8 +1,10 @@
 from peewee import *
-from deta import Deta
+from playhouse.sqliteq import SqliteQueueDatabase
+# from deta import Deta
 
-deta = Deta('b0wjwc47_vDEHNf1P9XWKQmQm5Yk7REWacUxZJjVV')
-db = deta.Base('usuarios')
+# deta = Deta('b0wjwc47_vDEHNf1P9XWKQmQm5Yk7REWacUxZJjVV')
+# db = deta.Base('usuarios')
+db = SqliteDatabase('usuarios.db', pragmas=[('journal_mode', 'wal')])
 
 # db = SqliteDatabase('usuarios.db')
 

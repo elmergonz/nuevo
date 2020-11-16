@@ -8,7 +8,7 @@ from db import dbdata
 router = APIRouter()
 geocoder = OpenCageGeocode('d4a9005f502d448ead5ee941b4943630')
 
-@router.get('/secret/list')
+@router.get('/api/secret/list')
 def secret_list(token:str):
     secrets = dbdata.get_secrets(token)
     user = dbdata.get_user_by_token(token)
@@ -22,7 +22,7 @@ def secret_list(token:str):
     else:
         return ServerResult(ok=False, message="No ha creado secretos")
 
-@router.post('/secret/create')
+@router.post('/api/secret/create')
 def create_secret(token:str, secret:Secret):
     '''
     La ubicacion que usted escriba tiene prioridad sobre las coordenadas, estas se rellenaran en base al lugar.
@@ -58,8 +58,8 @@ def create_secret(token:str, secret:Secret):
     else:
         return ServerResult(ok=False, message="Token invalido o ha cerrado sesion")
 
-@router.delete('/secret/delete')
-def create_secret(token:str, id:int):
+@router.delete('/api/secret/delete')
+def delete_secret(token:str, id:int):
     user = dbdata.get_user_by_token(token)
     secrets = dbdata.get_secrets(token)
 
