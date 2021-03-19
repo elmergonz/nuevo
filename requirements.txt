@@ -15,5 +15,5 @@ pyOpenSSL==19.1.0
 requests==2.25.0
 six==1.15.0
 starlette==0.13.6
-urllib3==1.26.2
+urllib3==1.26.3
 uvicorn==0.12.2
